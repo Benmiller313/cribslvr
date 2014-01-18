@@ -1,0 +1,1204 @@
+g++ card.cpp -c
+g++ hand.cpp -c
+g++ -L../../unittest++/ -I../../unittest++/src/ test.cpp card.o hand.o -lUnitTest++  -o tests
+./tests
+start
+Current combo: 
+Current remaining
+C1
+S10
+S11
+C12
+C13
+
+Current combo: 
+C1
+Current remaining
+S10
+S11
+C12
+C13
+
+Current combo: 
+C1
+S10
+Current remaining
+S11
+C12
+C13
+
+Current combo: 
+C1
+S11
+Current remaining
+C12
+C13
+
+Current combo: 
+C1
+C12
+Current remaining
+C13
+
+Current combo: 
+C1
+C13
+Current remaining
+
+Current combo: 
+S10
+Current remaining
+S11
+C12
+C13
+
+Current combo: 
+S11
+Current remaining
+C12
+C13
+
+Current combo: 
+C12
+Current remaining
+C13
+
+Current combo: 
+C13
+Current remaining
+
+15 points: 0
+Current combo: 
+Current remaining
+C1
+S10
+S11
+C12
+C13
+
+Current combo: 
+C1
+Current remaining
+S10
+S11
+C12
+C13
+
+Current combo: 
+C1
+S10
+Current remaining
+S11
+C12
+C13
+
+Current combo: 
+C1
+S11
+Current remaining
+C12
+C13
+
+Current combo: 
+C1
+C12
+Current remaining
+C13
+
+Current combo: 
+C1
+C13
+Current remaining
+
+Current combo: 
+S10
+Current remaining
+S11
+C12
+C13
+
+Current combo: 
+S11
+Current remaining
+C12
+C13
+
+Current combo: 
+C12
+Current remaining
+C13
+
+Current combo: 
+C13
+Current remaining
+
+start
+dubs
+Current combo: 
+Current remaining
+C6
+C10
+S10
+S11
+S12
+
+Current combo: 
+C6
+Current remaining
+C10
+S10
+S11
+S12
+
+Current combo: 
+C10
+Current remaining
+S10
+S11
+S12
+
+Current combo: 
+S10
+Current remaining
+S11
+S12
+
+Current combo: 
+S11
+Current remaining
+S12
+
+Current combo: 
+S12
+Current remaining
+
+15 points: 0
+Current combo: 
+Current remaining
+C6
+C10
+S10
+S11
+S12
+
+Current combo: 
+C6
+Current remaining
+C10
+S10
+S11
+S12
+
+Current combo: 
+C10
+Current remaining
+S10
+S11
+S12
+
+Current combo: 
+S10
+Current remaining
+S11
+S12
+
+Current combo: 
+S11
+Current remaining
+S12
+
+Current combo: 
+S12
+Current remaining
+
+start
+Current combo: 
+Current remaining
+C1
+S5
+S10
+S11
+S13
+
+Current combo: 
+C1
+Current remaining
+S5
+S10
+S11
+S13
+
+Current combo: 
+C1
+S5
+Current remaining
+S10
+S11
+S13
+
+Current combo: 
+C1
+S10
+Current remaining
+S11
+S13
+
+Current combo: 
+C1
+S11
+Current remaining
+S13
+
+Current combo: 
+C1
+S13
+Current remaining
+
+Current combo: 
+S5
+Current remaining
+S10
+S11
+S13
+
+S5
+S10
+
+S5
+S11
+
+S5
+S13
+
+Current combo: 
+S10
+Current remaining
+S11
+S13
+
+Current combo: 
+S11
+Current remaining
+S13
+
+Current combo: 
+S13
+Current remaining
+
+15 points: 3
+Current combo: 
+Current remaining
+C1
+S5
+S10
+S11
+S13
+
+Current combo: 
+C1
+Current remaining
+S5
+S10
+S11
+S13
+
+Current combo: 
+C1
+S5
+Current remaining
+S10
+S11
+S13
+
+Current combo: 
+C1
+S10
+Current remaining
+S11
+S13
+
+Current combo: 
+C1
+S11
+Current remaining
+S13
+
+Current combo: 
+C1
+S13
+Current remaining
+
+Current combo: 
+S5
+Current remaining
+S10
+S11
+S13
+
+S5
+S10
+
+S5
+S11
+
+S5
+S13
+
+Current combo: 
+S10
+Current remaining
+S11
+S13
+
+Current combo: 
+S11
+Current remaining
+S13
+
+Current combo: 
+S13
+Current remaining
+
+test.cpp:199: error: Failure in HandCount15s: Expected 6 but was 3
+start
+dubs
+Current combo: 
+Current remaining
+C5
+S5
+S10
+S11
+S13
+
+Current combo: 
+C5
+Current remaining
+S5
+S10
+S11
+S13
+
+Current combo: 
+C5
+S5
+Current remaining
+S10
+S11
+S13
+
+C5
+S10
+
+C5
+S11
+
+C5
+S13
+
+Current combo: 
+S5
+Current remaining
+S10
+S11
+S13
+
+S5
+S10
+
+S5
+S11
+
+S5
+S13
+
+Current combo: 
+S10
+Current remaining
+S11
+S13
+
+Current combo: 
+S11
+Current remaining
+S13
+
+Current combo: 
+S13
+Current remaining
+
+15 points: 6
+Current combo: 
+Current remaining
+C5
+S5
+S10
+S11
+S13
+
+Current combo: 
+C5
+Current remaining
+S5
+S10
+S11
+S13
+
+Current combo: 
+C5
+S5
+Current remaining
+S10
+S11
+S13
+
+C5
+S10
+
+C5
+S11
+
+C5
+S13
+
+Current combo: 
+S5
+Current remaining
+S10
+S11
+S13
+
+S5
+S10
+
+S5
+S11
+
+S5
+S13
+
+Current combo: 
+S10
+Current remaining
+S11
+S13
+
+Current combo: 
+S11
+Current remaining
+S13
+
+Current combo: 
+S13
+Current remaining
+
+test.cpp:200: error: Failure in HandCount15s: Expected 14 but was 8
+start
+Current combo: 
+Current remaining
+S1
+S8
+S10
+S12
+S13
+
+Current combo: 
+S1
+Current remaining
+S8
+S10
+S12
+S13
+
+Current combo: 
+S1
+S8
+Current remaining
+S10
+S12
+S13
+
+Current combo: 
+S1
+S10
+Current remaining
+S12
+S13
+
+Current combo: 
+S1
+S12
+Current remaining
+S13
+
+Current combo: 
+S1
+S13
+Current remaining
+
+Current combo: 
+S8
+Current remaining
+S10
+S12
+S13
+
+Current combo: 
+S10
+Current remaining
+S12
+S13
+
+Current combo: 
+S12
+Current remaining
+S13
+
+Current combo: 
+S13
+Current remaining
+
+15 points: 0
+Current combo: 
+Current remaining
+S1
+S8
+S10
+S12
+S13
+
+Current combo: 
+S1
+Current remaining
+S8
+S10
+S12
+S13
+
+Current combo: 
+S1
+S8
+Current remaining
+S10
+S12
+S13
+
+Current combo: 
+S1
+S10
+Current remaining
+S12
+S13
+
+Current combo: 
+S1
+S12
+Current remaining
+S13
+
+Current combo: 
+S1
+S13
+Current remaining
+
+Current combo: 
+S8
+Current remaining
+S10
+S12
+S13
+
+Current combo: 
+S10
+Current remaining
+S12
+S13
+
+Current combo: 
+S12
+Current remaining
+S13
+
+Current combo: 
+S13
+Current remaining
+
+start
+Current combo: 
+Current remaining
+S1
+S2
+S6
+C10
+C11
+
+Current combo: 
+S1
+Current remaining
+S2
+S6
+C10
+C11
+
+Current combo: 
+S1
+S2
+Current remaining
+S6
+C10
+C11
+
+Current combo: 
+S1
+S2
+S6
+Current remaining
+C10
+C11
+
+Current combo: 
+S1
+S2
+C10
+Current remaining
+C11
+
+Current combo: 
+S1
+S2
+C11
+Current remaining
+
+Current combo: 
+S1
+S6
+Current remaining
+C10
+C11
+
+Current combo: 
+S1
+C10
+Current remaining
+C11
+
+Current combo: 
+S1
+C11
+Current remaining
+
+Current combo: 
+S2
+Current remaining
+S6
+C10
+C11
+
+Current combo: 
+S2
+S6
+Current remaining
+C10
+C11
+
+Current combo: 
+S2
+C10
+Current remaining
+C11
+
+Current combo: 
+S2
+C11
+Current remaining
+
+Current combo: 
+S6
+Current remaining
+C10
+C11
+
+Current combo: 
+C10
+Current remaining
+C11
+
+Current combo: 
+C11
+Current remaining
+
+15 points: 0
+Current combo: 
+Current remaining
+S1
+S2
+S6
+C10
+C11
+
+Current combo: 
+S1
+Current remaining
+S2
+S6
+C10
+C11
+
+Current combo: 
+S1
+S2
+Current remaining
+S6
+C10
+C11
+
+Current combo: 
+S1
+S2
+S6
+Current remaining
+C10
+C11
+
+Current combo: 
+S1
+S2
+C10
+Current remaining
+C11
+
+Current combo: 
+S1
+S2
+C11
+Current remaining
+
+Current combo: 
+S1
+S6
+Current remaining
+C10
+C11
+
+Current combo: 
+S1
+C10
+Current remaining
+C11
+
+Current combo: 
+S1
+C11
+Current remaining
+
+Current combo: 
+S2
+Current remaining
+S6
+C10
+C11
+
+Current combo: 
+S2
+S6
+Current remaining
+C10
+C11
+
+Current combo: 
+S2
+C10
+Current remaining
+C11
+
+Current combo: 
+S2
+C11
+Current remaining
+
+Current combo: 
+S6
+Current remaining
+C10
+C11
+
+Current combo: 
+C10
+Current remaining
+C11
+
+Current combo: 
+C11
+Current remaining
+
+start
+trips
+Current combo: 
+Current remaining
+D1
+H2
+D5
+C5
+S5
+
+Current combo: 
+D1
+Current remaining
+H2
+D5
+C5
+S5
+
+Current combo: 
+D1
+H2
+Current remaining
+D5
+C5
+S5
+
+Current combo: 
+D1
+H2
+D5
+Current remaining
+C5
+S5
+
+Current combo: 
+D1
+H2
+D5
+C5
+Current remaining
+S5
+
+Current combo: 
+D1
+H2
+D5
+S5
+Current remaining
+
+Current combo: 
+D1
+H2
+C5
+Current remaining
+S5
+
+Current combo: 
+D1
+H2
+C5
+S5
+Current remaining
+
+Current combo: 
+D1
+H2
+S5
+Current remaining
+
+Current combo: 
+D1
+D5
+Current remaining
+C5
+S5
+
+Current combo: 
+D1
+D5
+C5
+Current remaining
+S5
+
+Current combo: 
+D1
+D5
+S5
+Current remaining
+
+Current combo: 
+D1
+C5
+Current remaining
+S5
+
+Current combo: 
+D1
+C5
+S5
+Current remaining
+
+Current combo: 
+D1
+S5
+Current remaining
+
+Current combo: 
+H2
+Current remaining
+D5
+C5
+S5
+
+Current combo: 
+H2
+D5
+Current remaining
+C5
+S5
+
+Current combo: 
+H2
+D5
+C5
+Current remaining
+S5
+
+Current combo: 
+H2
+D5
+S5
+Current remaining
+
+Current combo: 
+H2
+C5
+Current remaining
+S5
+
+Current combo: 
+H2
+C5
+S5
+Current remaining
+
+Current combo: 
+H2
+S5
+Current remaining
+
+Current combo: 
+D5
+Current remaining
+C5
+S5
+
+Current combo: 
+D5
+C5
+Current remaining
+S5
+
+D5
+C5
+S5
+
+Current combo: 
+D5
+S5
+Current remaining
+
+Current combo: 
+C5
+Current remaining
+S5
+
+Current combo: 
+C5
+S5
+Current remaining
+
+Current combo: 
+S5
+Current remaining
+
+15 points: 1
+Current combo: 
+Current remaining
+D1
+H2
+D5
+C5
+S5
+
+Current combo: 
+D1
+Current remaining
+H2
+D5
+C5
+S5
+
+Current combo: 
+D1
+H2
+Current remaining
+D5
+C5
+S5
+
+Current combo: 
+D1
+H2
+D5
+Current remaining
+C5
+S5
+
+Current combo: 
+D1
+H2
+D5
+C5
+Current remaining
+S5
+
+Current combo: 
+D1
+H2
+D5
+S5
+Current remaining
+
+Current combo: 
+D1
+H2
+C5
+Current remaining
+S5
+
+Current combo: 
+D1
+H2
+C5
+S5
+Current remaining
+
+Current combo: 
+D1
+H2
+S5
+Current remaining
+
+Current combo: 
+D1
+D5
+Current remaining
+C5
+S5
+
+Current combo: 
+D1
+D5
+C5
+Current remaining
+S5
+
+Current combo: 
+D1
+D5
+S5
+Current remaining
+
+Current combo: 
+D1
+C5
+Current remaining
+S5
+
+Current combo: 
+D1
+C5
+S5
+Current remaining
+
+Current combo: 
+D1
+S5
+Current remaining
+
+Current combo: 
+H2
+Current remaining
+D5
+C5
+S5
+
+Current combo: 
+H2
+D5
+Current remaining
+C5
+S5
+
+Current combo: 
+H2
+D5
+C5
+Current remaining
+S5
+
+Current combo: 
+H2
+D5
+S5
+Current remaining
+
+Current combo: 
+H2
+C5
+Current remaining
+S5
+
+Current combo: 
+H2
+C5
+S5
+Current remaining
+
+Current combo: 
+H2
+S5
+Current remaining
+
+Current combo: 
+D5
+Current remaining
+C5
+S5
+
+Current combo: 
+D5
+C5
+Current remaining
+S5
+
+D5
+C5
+S5
+
+Current combo: 
+D5
+S5
+Current remaining
+
+Current combo: 
+C5
+Current remaining
+S5
+
+Current combo: 
+C5
+S5
+Current remaining
+
+Current combo: 
+S5
+Current remaining
+
+test.cpp:233: error: Failure in HandCountNeatHands: Expected 8 but was 7
+FAILURE: 2 out of 18 tests failed (3 failures).
+Test time: 0.00 seconds.
