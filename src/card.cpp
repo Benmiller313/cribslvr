@@ -30,7 +30,7 @@ Card::Card(std::string code)
 	}
 	std::stringstream ss(code.substr(1));
 	ss >> number;
-	if(number < 1 || number > 13){
+	if(number < 1 || number > 14){
 		throw std::invalid_argument("Card number must be between 1 and 13.");
 	}
 }

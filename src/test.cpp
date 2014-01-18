@@ -43,7 +43,7 @@ TEST(CardConstructionWithCodeErrors)
 {
 	CHECK_THROW(Card card_(""), std::invalid_argument);
 	CHECK_THROW(Card card_S0("S0"), std::invalid_argument);
-	CHECK_THROW(Card card_S14("S14"), std::invalid_argument);
+	CHECK_THROW(Card card_S14("S15"), std::invalid_argument);
 	CHECK_THROW(Card card_X3("X3"), std::invalid_argument);
 }
 
@@ -240,6 +240,11 @@ TEST(HandCountNeatHands)
 	test_hand->discard(Card("C1"), Card("C2"));
 	CHECK_EQUAL(29, test_hand->countPoints(Card("D5")));
 	delete test_hand;
+
+	std::string cards3[6] = {"S7", "C7", "D7", "H7", "C1", "C2"};
+	test_hand = setupTestHand(cards3);
+	test_hand->discard(Card("C1"), Card("C2"));
+	CHECK_EQUAL(24, test_hand->countPoints(Card("S1")));
 }
 
 
