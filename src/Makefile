@@ -14,7 +14,7 @@ hand.o : hand.cpp hand.h card.o
 
 card.o : card.cpp card.h
 	g++ card.cpp -c
-
+ 
 .PHONY : clean
 clean:
 	-rm $(objects) tests

@@ -3,7 +3,7 @@
 namespace cribslvr {
 
 
-
+ 
 std::set<Card> Solver::allCards = Solver::generateAllCards();
 
 /*
