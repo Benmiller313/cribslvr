@@ -63,7 +63,9 @@ std::set<Card> const * Hand::getKeepers() const
 
 int Hand::countPoints(Card turn_card) const
 {
-	//std::cout << "start" << std::endl;
+	if(keepers->size() != 4){
+		throw new std::logic_exception;
+	}
 	std::set<Card> full_hand(*keepers);
 	full_hand.insert(turn_card);
 
