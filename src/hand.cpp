@@ -39,17 +39,17 @@ std::string Hand::print() const
 	return ret.str();
 }
 
-std::set<Card>* Hand::getDiscarded()
+std::set<Card>* Hand::getDiscarded() const
 {
 	return discarded;
 }
 
-std::set<Card>* Hand::getKeepers()
+std::set<Card>* Hand::getKeepers() const 
 {
 	return keepers;
 }
 
-int Hand::countPoints(Card turn_card)
+int Hand::countPoints(Card turn_card) const
 {
 	//std::cout << "start" << std::endl;
 	std::set<Card> full_hand(*keepers);
@@ -124,13 +124,6 @@ int Hand::countPoints(Card turn_card)
 	return points;
 }
 
-void printCardSet(const std::set<Card>& cards){
-	for(std::set<Card>::const_iterator i = cards.begin(); i != cards.end(); i++){
-		std::cout << i->print() << std::endl;
-	}
-}
-
-
 /*
  *	Look at all 2, 3, 4 and 5 combinations of a hand
  *	and see if they add up to 15. 
@@ -139,7 +132,7 @@ void printCardSet(const std::set<Card>& cards){
  *	in the hand is too large, we no longer need to test
  *	the current combination further. 
  */
-int Hand::count15s(std::set<Card> combination, std::set<Card> remaining)
+int Hand::count15s(std::set<Card> combination, std::set<Card> remaining) const
 {
 	/*std::cout << "Current combo: " << std::endl;
 	printCardSet( combination );
@@ -173,7 +166,7 @@ int Hand::count15s(std::set<Card> combination, std::set<Card> remaining)
 
 }
 
-int Hand::count15s(const Card& turn_card)
+int Hand::count15s(const Card& turn_card) const
 {
 	std::set<Card> empty;
 	std::set<Card> full_hand(*keepers);
@@ -181,7 +174,7 @@ int Hand::count15s(const Card& turn_card)
 	return count15s(empty, full_hand);
 }
 
-int Hand::sumCards(const std::set<Card>& cards)
+int Hand::sumCards(const std::set<Card>& cards) const
 {
 	int sum = 0;
 	for(std::set<Card>::const_iterator i = cards.begin(); i != cards.end(); i++){

@@ -6,8 +6,11 @@
 
 #include <map>
 #include <set>
+#include <vector>
 
 namespace cribslvr{
+
+typedef std::map<int, std::vector<Card> > PossibilityMap;
 
 class Solver{
 public:
@@ -20,15 +23,19 @@ public:
 	 * 	Does not factor in the crib. 
 	 */	
 	int discardForMaxPoints();
-	std::map<int, double> findScoringProbabilites() const ;
 
-	static std::set<Card> allCards;
+	/*
+	 *	Takes the keepers from a hand and adds all possible 
+	 *	turn cards and counts the points. Return a map of the
+	 *	points earned and the turn_cards that make those points. 
+	 */
+	PossibilityMap findScoringPossibilites() const ;
+
+	static const std::set<Card> all_cards;
 
 private:
 	Hand hand;
-	
 	static std::set<Card> generateAllCards();
-
 
 };
 
@@ -36,4 +43,3 @@ private:
 
 #endif
 
- 
