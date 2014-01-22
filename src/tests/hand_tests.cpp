@@ -1,8 +1,8 @@
 #include <unittest++/UnitTest++.h>
 #include "../card.h"
 #include "../hand.h"
-#include <stdexcept>
 
+#include <stdexcept>
 #include <set>
 
 using namespace cribslvr;
@@ -195,6 +195,14 @@ TEST(HandCountNeatHands)
 	test_hand = setupTestHand(cards3);
 	test_hand->discard(Card("C1"), Card("C2"));
 	CHECK_EQUAL(24, test_hand->countPoints(Card("S1")));
+}
+
+TEST(HandCountHandsWithoutDiscard)
+{
+	std::string cards[6] = {"S5", "C5", "H2", "D1", "S1", "S2"};
+	Hand* test_hand = setupTestHand(cards);
+	//No discard!
+	CHECK_THROW(test_hand->countPoints(Card("D5")), std::logic_error);
 }
 
 }

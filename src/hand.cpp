@@ -64,7 +64,7 @@ std::set<Card> const * Hand::getKeepers() const
 int Hand::countPoints(Card turn_card) const
 {
 	if(keepers->size() != 4){
-		throw new std::logic_exception;
+		throw std::logic_error("Must discard before counting points!");
 	}
 	std::set<Card> full_hand(*keepers);
 	full_hand.insert(turn_card);
