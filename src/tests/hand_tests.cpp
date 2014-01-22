@@ -39,12 +39,12 @@ TEST(HandDiscard)
 	Hand* test_hand = setupTestHand(cards);
 
 	test_hand->discard(Card("S9"), Card("H10"));
-	std::set<Card> *dis = test_hand->getDiscarded();
+	std::set<Card> const *dis = test_hand->getDiscarded();
 	CHECK(!(dis->find(Card("S9"))==dis->end()));
 	CHECK(!(dis->find(Card("H10"))==dis->end()));
 	CHECK_EQUAL(dis->size(), 2);
 
-	std::set<Card> *keepers = test_hand->getKeepers();
+	std::set<Card> const *keepers = test_hand->getKeepers();
 	CHECK_EQUAL(keepers->size(), 4);
 
 	delete test_hand;

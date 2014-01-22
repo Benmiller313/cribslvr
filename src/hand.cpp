@@ -5,6 +5,7 @@
 #include <map>
 
 #include <iostream>
+#include <stdexcept>
 
 namespace cribslvr{
 
@@ -17,16 +18,27 @@ Hand::Hand(Card input_cards[6])
 
 void Hand::discard(Card first_card, Card second_card)
 {
-	keepers->clear();
-	discarded->clear();
-	for(std::set<Card>::iterator i = cards->begin(); i != cards->end(); i++){
-		if((*i)==first_card || (*i)==second_card){
-			discarded->insert(*i);
-		}
-		else{
-			keepers->insert(*i);
+	delete keepers;
+	delete discarded;
+	std::set<Card>* temp_keepers = new std::set<Card>();
+	std::set<Card>* temp_discarded = new std::set<Card>();
+	try{
+		for(std::set<Card>::iterator i = cards->begin(); i != cards->end(); i++){
+			if((*i)==first_card || (*i)==second_card){
+				temp_discarded->insert(*i);
+			}
+			else{
+				temp_keepers->insert(*i);
+			}
 		}
 	}
+	catch(std::exception e){		//Im not 100% sure that this is what  	
+		delete temp_keepers;		//should be done here.
+		delete temp_discarded; 
+		throw e;
+	}
+	keepers = temp_keepers;
+	discarded = temp_discarded;
 }
 
 std::string Hand::print() const
@@ -39,12 +51,12 @@ std::string Hand::print() const
 	return ret.str();
 }
 
-std::set<Card>* Hand::getDiscarded() const
+std::set<Card> const * Hand::getDiscarded() const
 {
 	return discarded;
 }
 
-std::set<Card>* Hand::getKeepers() const 
+std::set<Card> const * Hand::getKeepers() const 
 {
 	return keepers;
 }
