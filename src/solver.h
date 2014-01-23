@@ -11,6 +11,16 @@
 namespace cribslvr{
 
 typedef std::map<int, std::vector<Card> > PossibilityMap;
+typedef std::map<int, double> ProbabilityMap;
+
+struct DiscardOutcome{
+	std::pair<Card, Card> discarded_cards;
+	PossibilityMap possibilities;
+	ProbabilityMap probabilities;
+	double expected_score;
+
+	DiscardOutcome(Card first, Card second) : discarded_cards(first, second){};
+};
 
 class Solver{
 public:
@@ -22,7 +32,7 @@ public:
 	 *	discard for the max expected hand value. 
 	 * 	Does not factor in the crib. 
 	 */	
-	int discardForMaxPoints();
+	std::vector<DiscardOutcome> discardForMaxPoints();
 
 	/*
 	 *	Takes the keepers from a hand and adds all possible 
@@ -36,6 +46,8 @@ public:
 private:
 	Hand hand;
 	static std::set<Card> generateAllCards();
+
+	void deriveProbabilites(const PossibilityMap&, ProbabilityMap&) const;
 
 };
 
