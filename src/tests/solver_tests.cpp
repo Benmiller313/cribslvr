@@ -3,6 +3,9 @@
 #include "../solver.h"
 #include "../hand.h"
 #include "../card.h"
+#include <stdexcept>
+#include <iostream>
+
 
 using namespace cribslvr;
 
@@ -38,10 +41,13 @@ SUITE(SolverTests)
 		Hand hand(cards);
 		Solver solver(hand);
 		std::vector<DiscardOutcome> outcomes = solver.discardForMaxPoints();
-		for(std::vector<DiscardOutcome>::iterator i = outcomes.begin(); i != outcomes.end(); i++){
-			i->print();
+		CHECK_EQUAL(15, outcomes.size());	//6c2
+		for(std::vector<DiscardOutcome>::iterator i=outcomes.begin(); i!=outcomes.end(); i++){
+			std::cout << i->print() <<std::endl;
 		}
 	}
+
+
 
 
 }

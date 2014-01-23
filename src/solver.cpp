@@ -1,6 +1,7 @@
 #include "solver.h"
 
 #include <iostream>
+#include <sstream>
 
 namespace cribslvr {
 
@@ -20,7 +21,7 @@ std::vector<DiscardOutcome> Solver::discardForMaxPoints()
 	for(std::set<Card>::iterator i=hand.getCards().begin(); i!=hand.getCards().end(); i++){
 		std::set<Card>::iterator next = i;
 		next++;
-		for(std::set<Card>::iterator j=next; i!=hand.getCards().end(); i++){
+		for(std::set<Card>::iterator j=next; j!=hand.getCards().end(); j++){
 			hand.discard(*i, *j);
 			//prepare the elements for the DiscardOutcome:
 			struct DiscardOutcome outcome(*i, *j);
@@ -74,10 +75,15 @@ std::set<Card> Solver::generateAllCards()
 
 std::string DiscardOutcome::print()
 {
-	std::cout << discarded_cards.first.print() << " " << discarded_cards.second.print() << " " << std::endl;
+	std::stringstream ret;
+	ret << discarded_cards.first.print() << " " << discarded_cards.second.print() << " " << std::endl;
+	ret << possibilities.size();
 	for(PossibilityMap::iterator i=possibilities.begin(); i!=possibilities.end(); i++){
-		std::cout << i->first << std::endl;
+		if(i->first != NULL){
+			ret << i->first << std::endl;
+		}
 	}
+	return ret.str();
 }
 
 }
