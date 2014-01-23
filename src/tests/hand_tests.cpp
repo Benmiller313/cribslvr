@@ -23,6 +23,14 @@ Hand* setupTestHand(std::string cards[6])
 
 SUITE(HandTests){
 
+TEST(HandConstructor)
+{
+	Card cards[6] = {Card("S9"), Card("S1"), Card("C1"), Card("C2"), Card("H1"), Card("H2")};
+	Hand test_hand(cards);
+	CHECK_EQUAL(6, test_hand.getCards().size());
+}
+
+
 TEST(HandPrint)
 {
 	std::string cards[6] = {"S9", "H10", "D10", "C8", "S8", "S6"};
@@ -39,13 +47,13 @@ TEST(HandDiscard)
 	Hand* test_hand = setupTestHand(cards);
 
 	test_hand->discard(Card("S9"), Card("H10"));
-	std::set<Card> const *dis = test_hand->getDiscarded();
-	CHECK(!(dis->find(Card("S9"))==dis->end()));
-	CHECK(!(dis->find(Card("H10"))==dis->end()));
-	CHECK_EQUAL(dis->size(), 2);
+	std::set<Card> const dis = test_hand->getDiscarded();
+	CHECK(!(dis.find(Card("S9"))==dis.end()));
+	CHECK(!(dis.find(Card("H10"))==dis.end()));
+	CHECK_EQUAL(dis.size(), 2);
 
-	std::set<Card> const *keepers = test_hand->getKeepers();
-	CHECK_EQUAL(keepers->size(), 4);
+	std::set<Card> const keepers = test_hand->getKeepers();
+	CHECK_EQUAL(keepers.size(), 4);
 
 	delete test_hand;
 }

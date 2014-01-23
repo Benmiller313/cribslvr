@@ -9,64 +9,57 @@
 
 namespace cribslvr{
 
-Hand::Hand(Card input_cards[6])
+Hand::Hand(Card input_cards[6]) : cards(input_cards, input_cards+6)
 {
-	this->cards = new std::set<Card>(input_cards, input_cards+6);
-	this->discarded = new std::set<Card>();
-	this->keepers = new std::set<Card>();
+	
 }
 
 void Hand::discard(Card first_card, Card second_card)
 {
-	delete keepers;
-	delete discarded;
-	std::set<Card>* temp_keepers = new std::set<Card>();
-	std::set<Card>* temp_discarded = new std::set<Card>();
-	try{
-		for(std::set<Card>::iterator i = cards->begin(); i != cards->end(); i++){
-			if((*i)==first_card || (*i)==second_card){
-				temp_discarded->insert(*i);
-			}
-			else{
-				temp_keepers->insert(*i);
-			}
+	keepers.clear();
+	discarded.clear();
+	for(std::set<Card>::iterator i = cards.begin(); i != cards.end(); i++){
+		if((*i)==first_card || (*i)==second_card){
+			discarded.insert(*i);
+		}
+		else{
+			keepers.insert(*i);
 		}
 	}
-	catch(std::exception e){		//Im not 100% sure that this is what  	
-		delete temp_keepers;		//should be done here.
-		delete temp_discarded; 
-		throw e;
-	}
-	keepers = temp_keepers;
-	discarded = temp_discarded;
 }
 
 std::string Hand::print() const
 {
 	std::stringstream ret;
-	for(std::set<Card>::iterator i = cards->begin(); i != cards->end(); ++i){
+	for(std::set<Card>::iterator i = cards.begin(); i != cards.end(); ++i){
 		ret << (*i).print() << std::endl;
 
 	}
+	std::cout << "test" << cards.size() << std::endl;
 	return ret.str();
 }
 
-std::set<Card> const * Hand::getDiscarded() const
+const std::set<Card>& Hand::getCards() const
+{
+	return cards;
+}
+
+const std::set<Card>& Hand::getDiscarded() const
 {
 	return discarded;
 }
 
-std::set<Card> const * Hand::getKeepers() const 
+const std::set<Card>& Hand::getKeepers() const 
 {
 	return keepers;
 }
 
 int Hand::countPoints(Card turn_card) const
 {
-	if(keepers->size() != 4){
+	if(keepers.size() != 4){
 		throw std::logic_error("Must discard before counting points!");
 	}
-	std::set<Card> full_hand(*keepers);
+	std::set<Card> full_hand(keepers);
 	full_hand.insert(turn_card);
 
 	int points = 0;
@@ -183,7 +176,7 @@ int Hand::count15s(std::set<Card> combination, std::set<Card> remaining) const
 int Hand::count15s(const Card& turn_card) const
 {
 	std::set<Card> empty;
-	std::set<Card> full_hand(*keepers);
+	std::set<Card> full_hand(keepers);
 	full_hand.insert(turn_card);
 	return count15s(empty, full_hand);
 }

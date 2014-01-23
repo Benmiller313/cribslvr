@@ -26,7 +26,7 @@ PossibilityMap Solver::findScoringPossibilites() const
 	int total_hands = 0;
 
 	for(std::set<Card>::iterator i = all_cards.begin(); i!=all_cards.end(); i++){
-		if(hand.getKeepers()->find(*i) == hand.getKeepers()->end()){	//Card isnt already in the hand
+		if(hand.getKeepers().find(*i) == hand.getKeepers().end()){	//Card isnt already in the hand
 			total_hands++;
 			int score = hand.countPoints(*i);
 			probabilites[score].push_back(*i);
