@@ -17,10 +17,10 @@ const std::set<Card> Solver::all_cards = Solver::generateAllCards();
 std::vector<DiscardOutcome> Solver::discardForMaxPoints()
 {
 	std::vector<DiscardOutcome> outcome_list;
-	for(std::set<Card>::iterator i=hand.getKeepers().begin(); i!=hand.getKeepers().end(); i++){
+	for(std::set<Card>::iterator i=hand.getCards().begin(); i!=hand.getCards().end(); i++){
 		std::set<Card>::iterator next = i;
 		next++;
-		for(std::set<Card>::iterator j=next; i!=hand.getKeepers().end(); i++){
+		for(std::set<Card>::iterator j=next; i!=hand.getCards().end(); i++){
 			hand.discard(*i, *j);
 			//prepare the elements for the DiscardOutcome:
 			struct DiscardOutcome outcome(*i, *j);
@@ -56,7 +56,9 @@ PossibilityMap Solver::findScoringPossibilites() const
 
 void Solver::deriveProbabilites(const PossibilityMap& possibilities, ProbabilityMap& probabilites) const
 {
-
+	for(PossibilityMap::const_iterator i=possibilities.begin(); i!= possibilities.end(); i++){
+		probabilites[i->first] = 48/i->second.size();
+	}
 }
 
 std::set<Card> Solver::generateAllCards()
@@ -68,6 +70,14 @@ std::set<Card> Solver::generateAllCards()
 		}
 	}
 	return all_cards;
+}
+
+std::string DiscardOutcome::print()
+{
+	std::cout << discarded_cards.first.print() << " " << discarded_cards.second.print() << " " << std::endl;
+	for(PossibilityMap::iterator i=possibilities.begin(); i!=possibilities.end(); i++){
+		std::cout << i->first << std::endl;
+	}
 }
 
 }

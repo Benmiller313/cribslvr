@@ -32,5 +32,16 @@ SUITE(SolverTests)
 		CHECK_EQUAL(probabilites[15].size(), 0);
 	}
 
+	TEST(DiscardForPointsTest)
+	{
+		Card cards[6] = {Card("S1"), Card("S2"), Card("S3"), Card("S4"), Card("S5"), Card("S6")};
+		Hand hand(cards);
+		Solver solver(hand);
+		std::vector<DiscardOutcome> outcomes = solver.discardForMaxPoints();
+		for(std::vector<DiscardOutcome>::iterator i = outcomes.begin(); i != outcomes.end(); i++){
+			i->print();
+		}
+	}
+
 
 }

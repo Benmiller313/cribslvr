@@ -7,6 +7,7 @@
 #include <map>
 #include <set>
 #include <vector>
+#include <string>
 
 namespace cribslvr{
 
@@ -20,6 +21,7 @@ struct DiscardOutcome{
 	double expected_score;
 
 	DiscardOutcome(Card first, Card second) : discarded_cards(first, second){};
+	std::string print();
 };
 
 class Solver{

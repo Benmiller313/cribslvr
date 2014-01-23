@@ -16,6 +16,15 @@ Hand::Hand(Card input_cards[6]) : cards(input_cards, input_cards+6)
 
 void Hand::discard(Card first_card, Card second_card)
 {
+	if(first_card == second_card){
+		throw std::invalid_argument("Error: Cards to discard must be different. (" + first_card.print() + ":" + second_card.print() + ")");
+	}
+	if(cards.find(first_card) == cards.end()){
+		throw std::invalid_argument("Error: Card " + first_card.print() + " is not a part of the hand.");
+	}
+	if(cards.find(second_card) == cards.end()){
+		throw std::invalid_argument("Error: Card " + second_card.print() + " is not a part of the hand.");
+	}
 	keepers.clear();
 	discarded.clear();
 	for(std::set<Card>::iterator i = cards.begin(); i != cards.end(); i++){
@@ -35,7 +44,6 @@ std::string Hand::print() const
 		ret << (*i).print() << std::endl;
 
 	}
-	std::cout << "test" << cards.size() << std::endl;
 	return ret.str();
 }
 
@@ -170,7 +178,6 @@ int Hand::count15s(std::set<Card> combination, std::set<Card> remaining) const
 	}
 
 	return fifteens;
-
 }
 
 int Hand::count15s(const Card& turn_card) const
