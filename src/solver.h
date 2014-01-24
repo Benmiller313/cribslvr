@@ -3,6 +3,7 @@
 
 #include "hand.h"
 #include "card.h"
+#include "DiscardOutcome.h"
 
 #include <map>
 #include <set>
@@ -11,19 +12,6 @@
 
 namespace cribslvr{
 
-typedef std::map<int, std::vector<Card> > PossibilityMap;
-typedef std::map<int, double> ProbabilityMap;
-
-struct DiscardOutcome{
-	std::pair<Card, Card> discarded_cards;
-	std::set<Card> keepers;
-	PossibilityMap possibilities;
-	ProbabilityMap probabilities;
-	double expected_score;
-
-	DiscardOutcome(Card first, Card second) : discarded_cards(first, second){};
-	std::string print();
-};
 
 class Solver{
 public:
@@ -49,7 +37,6 @@ public:
 private:
 	Hand hand;
 	static std::set<Card> generateAllCards();
-
 	void deriveProbabilites(const PossibilityMap&, ProbabilityMap&) const;
 
 };
