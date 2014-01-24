@@ -25,6 +25,7 @@ struct DiscardOutcome{
 	DiscardOutcome(Card first, Card second) : discarded_cards(first, second){};
 	std::string print();
 	
+	bool operator> (const DiscardOutcome&) const;
 
 };
 

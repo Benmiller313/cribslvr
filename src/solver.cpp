@@ -1,6 +1,8 @@
 #include "solver.h"
 
 #include <sstream>
+#include <algorithm>
+#include <functional>
 
 namespace cribslvr {
 
@@ -36,6 +38,7 @@ std::vector<DiscardOutcome> Solver::discardForMaxPoints()
 			outcome_list.push_back(outcome);
 		}
 	}
+	sort(outcome_list.begin(), outcome_list.end(), std::greater<DiscardOutcome>());
 	return outcome_list;
 }
 

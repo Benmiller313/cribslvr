@@ -33,4 +33,9 @@ std::string DiscardOutcome::print()
 	return ret.str();
 }
 
+bool DiscardOutcome::operator>(const DiscardOutcome& smaller) const
+{
+	return expected_score > smaller.expected_score; 
+}
+
 }
