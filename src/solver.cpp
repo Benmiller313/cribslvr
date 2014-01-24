@@ -1,6 +1,5 @@
 #include "solver.h"
 
-#include <iostream>
 #include <sstream>
 
 namespace cribslvr {
@@ -25,8 +24,9 @@ std::vector<DiscardOutcome> Solver::discardForMaxPoints()
 			hand.discard(*i, *j);
 			//prepare the elements for the DiscardOutcome:
 			struct DiscardOutcome outcome(*i, *j);
+			outcome.keepers = hand.getKeepers();
 			outcome.possibilities = findScoringPossibilites();
-			//probabilites is derivative of poss.
+			//probabilities is derivative of poss.
 			deriveProbabilites(outcome.possibilities, outcome.probabilities);
 			outcome.expected_score = 0;
 			//Expected value equals the sum of all X*Probability(X) for possible scores X
@@ -41,24 +41,25 @@ std::vector<DiscardOutcome> Solver::discardForMaxPoints()
 
 PossibilityMap Solver::findScoringPossibilites() const
 {
-	PossibilityMap probabilites;
+	PossibilityMap probabilities;
 	int total_hands = 0;
 
 	for(std::set<Card>::iterator i = all_cards.begin(); i!=all_cards.end(); i++){
 		if(hand.getKeepers().find(*i) == hand.getKeepers().end()){	//Card isnt already in the hand
 			total_hands++;
 			int score = hand.countPoints(*i);
-			probabilites[score].push_back(*i);
+			probabilities[score].push_back(*i);
 		}
 	}
 
-	return probabilites;
+	return probabilities;
 }
 
 void Solver::deriveProbabilites(const PossibilityMap& possibilities, ProbabilityMap& probabilites) const
 {
 	for(PossibilityMap::const_iterator i=possibilities.begin(); i!= possibilities.end(); i++){
-		probabilites[i->first] = 48/i->second.size();
+		probabilites[i->first] = i->second.size()/48.0;
+
 	}
 }
 
@@ -76,13 +77,28 @@ std::set<Card> Solver::generateAllCards()
 std::string DiscardOutcome::print()
 {
 	std::stringstream ret;
-	ret << discarded_cards.first.print() << " " << discarded_cards.second.print() << " " << std::endl;
-	ret << possibilities.size();
+	ret.precision(3);
+	ret.setf(std::ios::fixed, std::ios::floatfield);
+	ret << "Discarded: " << discarded_cards.first.print() << " " << discarded_cards.second.print() << " " << std::endl;
+	ret << "Kept: ";
+	for(std::set<Card>::iterator i=keepers.begin(); i!=keepers.end(); i++){
+		ret << i->print() << " ";
+	}
+	ret << std::endl;
 	for(PossibilityMap::iterator i=possibilities.begin(); i!=possibilities.end(); i++){
 		if(i->first != NULL){
-			ret << i->first << std::endl;
+			ret << i->first << ": ";
+			if(i->first < 10){
+				ret << " ";
+			}
+			ret << "%" << probabilities[i->first]*100 << "\t";
+			for(std::vector<Card>::iterator card=i->second.begin(); card!=i->second.end(); card++){
+				ret << card->print() << " ";
+			}
+			ret << std::endl;
 		}
 	}
+	ret << "Expected Score: " << expected_score << std::endl;
 	return ret.str();
 }
 

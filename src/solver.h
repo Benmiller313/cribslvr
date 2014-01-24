@@ -16,6 +16,7 @@ typedef std::map<int, double> ProbabilityMap;
 
 struct DiscardOutcome{
 	std::pair<Card, Card> discarded_cards;
+	std::set<Card> keepers;
 	PossibilityMap possibilities;
 	ProbabilityMap probabilities;
 	double expected_score;

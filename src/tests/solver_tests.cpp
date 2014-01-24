@@ -41,7 +41,7 @@ SUITE(SolverTests)
 		Hand hand(cards);
 		Solver solver(hand);
 		std::vector<DiscardOutcome> outcomes = solver.discardForMaxPoints();
-		CHECK_EQUAL(15, outcomes.size());	//6c2
+		CHECK_EQUAL(15, outcomes.size());	//6-choose-2
 		for(std::vector<DiscardOutcome>::iterator i=outcomes.begin(); i!=outcomes.end(); i++){
 			std::cout << i->print() <<std::endl;
 		}
