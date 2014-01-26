@@ -2,8 +2,10 @@
 #define CSHAND_H
 
 #include "card.h"
+
 #include <set>
 #include <string>
+#include <vector>
 
 
 namespace cribslvr{
@@ -11,6 +13,7 @@ namespace cribslvr{
 class Hand{
 public:
 	Hand(Card input_cards[6]);
+	Hand(std::vector<Card>::iterator, std::vector<Card>::iterator);
 	int countPoints(Card turn_card) const;
 	void discard(Card, Card);
 	std::string print() const; 

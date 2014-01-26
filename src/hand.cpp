@@ -5,9 +5,19 @@
 #include <map>
 
 #include <iostream>
+#include <vector>
 #include <stdexcept>
 
 namespace cribslvr{
+
+Hand::Hand(std::vector<Card>::iterator begin, std::vector<Card>::iterator end)
+{
+	while(begin != end){
+		cards.insert(*begin);
+		begin++;
+	}
+}
+
 
 Hand::Hand(Card input_cards[6]) : cards(input_cards, input_cards+6)
 {
