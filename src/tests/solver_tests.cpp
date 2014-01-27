@@ -11,10 +11,7 @@ using namespace cribslvr;
 
 SUITE(SolverTests)
 {
-	TEST(AllCardsSizeTest)
-	{
-		CHECK_EQUAL(52, Solver::all_cards.size());
-	}
+
 
 	TEST(PossibilitiesTest)
 	{

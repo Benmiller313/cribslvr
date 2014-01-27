@@ -2,6 +2,7 @@
 #define CSCARD_H
 
 #include <string>
+#include <set>
 
 namespace cribslvr{
 
@@ -31,10 +32,14 @@ public:
 	int getNumber() const;
 	Suit getSuit() const;
 
+	static const std::set<Card> all_cards;
+
 private:
 
 	 int number;		//Number is the actual number sequence of the card. Ace is 1, King is 13
 	 Suit suit;
+
+	 static std::set<Card> generateAllCards();
 
 };
 }

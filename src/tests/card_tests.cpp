@@ -10,6 +10,11 @@ using namespace cribslvr;
 
 SUITE(cardtests){
 
+TEST(AllCardsSizeTest)
+{
+	CHECK_EQUAL(52, Card::all_cards.size());
+}
+
 TEST(CardConstruction)
 {
 	Card test_card(cribslvr::SPADE, 3);

@@ -2,9 +2,12 @@
 
 #include <sstream>
 #include <stdexcept>
+#include <set>
 
 namespace cribslvr
 {
+
+const std::set<Card> Card::all_cards = Card::generateAllCards();
 
 Card::Card(std::string code)
 {
@@ -84,5 +87,17 @@ std::string Card::print() const
 	ret << number;
 	return ret.str();
 }
+
+std::set<Card> Card::generateAllCards()
+{
+	std::set<Card> all_cards;
+	for(int suitIterator = HEART; suitIterator <= SPADE; suitIterator++){
+		for(int card_num = 1; card_num < 14; card_num++){
+			all_cards.insert(Card(static_cast<Suit>(suitIterator), card_num));
+		}
+	}
+	return all_cards;
+}
+
 
 }
