@@ -45,9 +45,6 @@ const std::set<Card>& Hand::getKeepers() const
 
 int Hand::countPoints(Card turn_card) const
 {
-	if(keepers.size() != 4){
-		throw std::logic_error("Must discard before counting points!");
-	}
 	std::set<Card> full_hand(keepers);
 	full_hand.insert(turn_card);
 
@@ -176,6 +173,15 @@ int Hand::sumCards(const std::set<Card>& cards) const
 		sum += i->getValue();
 	}
 	return sum;
+}
+
+void Hand::addCards(std::set<Card> newCards)
+{
+	std::set<Card>::iterator i;
+	for(i=newCards.begin(); i!= newCards.end(); i++){
+		keepers.insert(*i);
+	}
+	return;
 }
 
 }

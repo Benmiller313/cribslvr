@@ -1,9 +1,11 @@
-objects = card.o hand.o playerHand.o solver.o DiscardOutcome.o
+objects = card.o hand.o playerHand.o solver.o DiscardOutcome.o round.o
 test_objects = card_tests.o hand_tests.o solver_tests.o playerHand_tests.o
 flags = -stdlib=libstdc++ -std=c++11
 
 cribslvr : $(objects) utest
 	./utest
+round.o : round.cpp round.h hand.o card.o playerHand.o
+	clang++ $(flags) round.cpp -c
 
 solver.o : solver.cpp solver.h card.o hand.o DiscardOutcome.o
 	clang++ $(flags) solver.cpp -c 

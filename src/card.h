@@ -11,6 +11,8 @@ enum Suit {HEART, DIAMOND, CLUB, SPADE};
 class Card {
 
 public:
+	Card(){}
+
 	Card(Suit suit, int number):
 		suit(suit),
 		number(number){}

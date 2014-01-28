@@ -15,6 +15,7 @@ public:
 
 	const std::set<Card>& getDiscarded() const;
 	const std::set<Card>& getCards() const;
+	bool hasDiscarded() const;
 
 private:
 	std::set<Card> discarded;

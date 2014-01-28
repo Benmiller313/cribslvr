@@ -17,6 +17,7 @@ public:
 	Hand(std::vector<Card>::iterator, std::vector<Card>::iterator);
 	virtual int countPoints(Card turn_card) const;
 	std::string print() const; 
+	void addCards(std::set<Card> newCards);
 
 	const std::set<Card>& getKeepers() const;
 protected:

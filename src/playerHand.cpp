@@ -64,4 +64,12 @@ int PlayerHand::countPoints(Card turn_card) const
 	return Hand::countPoints(turn_card);
 }
 
+bool PlayerHand::hasDiscarded() const 
+{
+	if(keepers.size() == 4){
+		return true;
+	}
+	return false;
+}
+
 }
