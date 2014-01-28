@@ -1,7 +1,7 @@
 #include <unittest++/UnitTest++.h>
 
 #include "../solver.h"
-#include "../hand.h"
+#include "../playerHand.h"
 #include "../card.h"
 #include <stdexcept>
 #include <iostream>
@@ -16,7 +16,7 @@ SUITE(SolverTests)
 	TEST(PossibilitiesTest)
 	{
 		Card cards[6] = {Card("S1"), Card("S2"), Card("S3"), Card("S10"), Card("C6"), Card("C13")};
-		Hand hand(cards);
+		PlayerHand hand(cards);
 		hand.discard(Card("C6"), Card("C13"));
 		Solver solver(hand); 
 		PossibilityMap probabilites = solver.findScoringPossibilites();
@@ -35,7 +35,7 @@ SUITE(SolverTests)
 	TEST(DiscardForPointsTest)
 	{
 		Card cards[6] = {Card("S1"), Card("S2"), Card("S3"), Card("S4"), Card("S5"), Card("S6")};
-		Hand hand(cards);
+		PlayerHand hand(cards);
 		Solver solver(hand);
 		std::vector<DiscardOutcome> outcomes = solver.discardForMaxPoints();
 		CHECK_EQUAL(15, outcomes.size());	//6-choose-2

@@ -1,7 +1,7 @@
 #ifndef CSSOLVER_H
 #define CSSOLVER_H
 
-#include "hand.h"
+#include "playerHand.h"
 #include "card.h"
 #include "DiscardOutcome.h"
 
@@ -15,7 +15,7 @@ namespace cribslvr{
 
 class Solver{
 public:
-	Solver(Hand hand):
+	Solver(PlayerHand hand):
 		hand(hand){}
 
 	/*
@@ -32,11 +32,11 @@ public:
 	 */
 	PossibilityMap findScoringPossibilites() const ;
 
-	static const std::set<Card> all_cards;
+	
 
 private:
-	Hand hand;
-	static std::set<Card> generateAllCards();
+	PlayerHand hand;
+	
 	void deriveProbabilites(const PossibilityMap&, ProbabilityMap&) const;
 
 };

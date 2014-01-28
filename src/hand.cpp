@@ -10,67 +10,38 @@
 
 namespace cribslvr{
 
+
 Hand::Hand(std::vector<Card>::iterator begin, std::vector<Card>::iterator end)
 {
 	while(begin != end){
-		cards.insert(*begin);
+		keepers.insert(*begin);
 		begin++;
 	}
 }
 
 
-Hand::Hand(Card input_cards[6]) : cards(input_cards, input_cards+6)
+Hand::Hand(Card input_cards[4]) : keepers(input_cards, input_cards+4)
 {
 	
 }
 
-void Hand::discard(Card first_card, Card second_card)
-{
-	if(first_card == second_card){
-		throw std::invalid_argument("Error: Cards to discard must be different. (" + first_card.print() + ":" + second_card.print() + ")");
-	}
-	if(cards.find(first_card) == cards.end()){
-		throw std::invalid_argument("Error: Card " + first_card.print() + " is not a part of the hand.");
-	}
-	if(cards.find(second_card) == cards.end()){
-		throw std::invalid_argument("Error: Card " + second_card.print() + " is not a part of the hand.");
-	}
-	keepers.clear();
-	discarded.clear();
-	for(std::set<Card>::iterator i = cards.begin(); i != cards.end(); i++){
-		if((*i)==first_card || (*i)==second_card){
-			discarded.insert(*i);
-		}
-		else{
-			keepers.insert(*i);
-		}
-	}
-}
 
 std::string Hand::print() const
 {
 	std::stringstream ret;
-	for(std::set<Card>::iterator i = cards.begin(); i != cards.end(); ++i){
+	for(std::set<Card>::iterator i = keepers.begin(); i != keepers.end(); ++i){
 		ret << (*i).print() << std::endl;
 
 	}
 	return ret.str();
 }
 
-const std::set<Card>& Hand::getCards() const
-{
-	return cards;
-}
-
-const std::set<Card>& Hand::getDiscarded() const
-{
-	return discarded;
-}
 
 const std::set<Card>& Hand::getKeepers() const 
 {
 	return keepers;
 }
+
 
 int Hand::countPoints(Card turn_card) const
 {

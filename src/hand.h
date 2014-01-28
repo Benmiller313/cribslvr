@@ -12,24 +12,24 @@ namespace cribslvr{
 
 class Hand{
 public:
-	Hand(Card input_cards[6]);
+	Hand(){};
+	Hand(Card input_cards[4]);
 	Hand(std::vector<Card>::iterator, std::vector<Card>::iterator);
-	int countPoints(Card turn_card) const;
-	void discard(Card, Card);
+	virtual int countPoints(Card turn_card) const;
 	std::string print() const; 
 
-	const std::set<Card>& getCards() const;
 	const std::set<Card>& getKeepers() const;
-	const std::set<Card>& getDiscarded() const;
+protected:
+	std::set<Card> keepers;
+
 private:
 
 	int count15s(std::set<Card> combination, std::set<Card> remaining) const;
 	int count15s(const Card& turn_card) const;
 	int sumCards(const std::set<Card>& cards) const;
 
-	std::set<Card> cards;
-	std::set<Card> keepers;
-	std::set<Card> discarded;
+	
+	
 
 };
 
