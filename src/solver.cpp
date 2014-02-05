@@ -1,4 +1,5 @@
 #include "solver.h"
+#include "discardTables.h"
 
 #include <sstream>
 #include <algorithm>
@@ -6,9 +7,11 @@
 
 namespace cribslvr {
 
-
- 
-
+Solver::Solver(PlayerHand hand, bool is_dealer)
+	:hand(hand), is_dealer(is_dealer)
+{
+	discard_tables = DiscardTables::getTables();
+}
 
 /*
  *	Iterate over all possible discards. 
@@ -35,6 +38,12 @@ std::vector<DiscardOutcome> Solver::discardForMaxPoints()
 			for(ProbabilityMap::iterator i=outcome.probabilities.begin(); i!=outcome.probabilities.end(); i++){
 				outcome.expected_score += i->first*i->second;	
 			}
+			if(is_dealer){
+				outcome.expected_score += DiscardTables::getTables()->getExpectedValue(is_dealer, i->getNumber(), j->getNumber());
+			}
+			else{
+				outcome.expected_score -= DiscardTables::getTables()->getExpectedValue(is_dealer, i->getNumber(), j->getNumber());
+			}
 			outcome_list.push_back(outcome);
 		}
 	}
@@ -57,6 +66,7 @@ PossibilityMap Solver::findScoringPossibilites() const
 
 	return probabilities;
 }
+
 
 void Solver::deriveProbabilites(const PossibilityMap& possibilities, ProbabilityMap& probabilites) const
 {

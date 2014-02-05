@@ -4,6 +4,8 @@
 #include "../card.h"
 
 #include <stdexcept>
+#include <algorithm>
+#include <set>
 
 namespace cribslvr {
 
@@ -51,6 +53,16 @@ SUITE(PlayerHandTests)
 
 	}
 
+	TEST(RandomDeal)
+	{
+		PlayerHand test_hand;
+		std::set<Card> remaining(Card::all_cards);
+		test_hand.dealCards(remaining);
+		CHECK_EQUAL(6, test_hand.getCards().size());
+		for(std::set<Card>::iterator i=test_hand.getCards().begin(); i!=test_hand.getCards().end(); i++){
+			CHECK(remaining.find(*i) == remaining.end());
+		}
+	}
 }
 
 

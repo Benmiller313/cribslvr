@@ -3,13 +3,15 @@
 
 #include "hand.h"
 
+#include <set>
+
 namespace cribslvr {
 
 class PlayerHand : public Hand {
 public:	
 	PlayerHand();
 	PlayerHand(Card cards[6]);
-	void dealCards();
+	void dealCards(std::set<Card>&);
 	void discard(Card first_card, Card second_card);
 	int countPoints(Card turn_card) const;
 

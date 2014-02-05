@@ -4,6 +4,9 @@
 #include "playerHand.h"
 #include "card.h"
 #include "DiscardOutcome.h"
+#include "round.h" 
+#include "hand.h"
+#include "discardTables.h"
 
 #include <map>
 #include <set>
@@ -12,11 +15,9 @@
 
 namespace cribslvr{
 
-
 class Solver{
 public:
-	Solver(PlayerHand hand):
-		hand(hand){}
+	Solver(PlayerHand hand, bool is_dealer);
 
 	/*
 	 *	Given a crib hand, select the two cards to 
@@ -32,10 +33,12 @@ public:
 	 */
 	PossibilityMap findScoringPossibilites() const ;
 
-	
+	DiscardTables* discard_tables;
+
 
 private:
 	PlayerHand hand;
+	bool is_dealer;
 	
 	void deriveProbabilites(const PossibilityMap&, ProbabilityMap&) const;
 

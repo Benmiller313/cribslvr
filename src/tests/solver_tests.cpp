@@ -18,7 +18,7 @@ SUITE(SolverTests)
 		Card cards[6] = {Card("S1"), Card("S2"), Card("S3"), Card("S10"), Card("C6"), Card("C13")};
 		PlayerHand hand(cards);
 		hand.discard(Card("C6"), Card("C13"));
-		Solver solver(hand); 
+		Solver solver(hand, true); 
 		PossibilityMap probabilites = solver.findScoringPossibilites();
 		CHECK_EQUAL(probabilites[1].size(), 0);
 		CHECK_EQUAL(probabilites[5].size(), 9);
@@ -36,7 +36,7 @@ SUITE(SolverTests)
 	{
 		Card cards[6] = {Card("S1"), Card("S2"), Card("S3"), Card("S4"), Card("S5"), Card("S6")};
 		PlayerHand hand(cards);
-		Solver solver(hand);
+		Solver solver(hand, true);
 		std::vector<DiscardOutcome> outcomes = solver.discardForMaxPoints();
 		CHECK_EQUAL(15, outcomes.size());	//6-choose-2
 	}

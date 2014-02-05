@@ -4,6 +4,8 @@
 #include <cstdlib>
 #include <time.h>
 #include <stdexcept>
+#include <set>
+#include <iterator>
 
 namespace cribslvr {
 
@@ -14,13 +16,19 @@ PlayerHand::PlayerHand(Card cards[6])
 }
 
 PlayerHand::PlayerHand(){
-	dealCards();
+	
 }
 
 
-void PlayerHand::dealCards()
+void PlayerHand::dealCards(std::set<Card>& available_cards)
 {
-
+	for(int i=0; i < 6; i++){
+		std::set<Card>::iterator iter = available_cards.begin();
+		int forward = rand() % available_cards.size();
+		std::advance(iter, forward);
+		cards.insert(*iter);
+		available_cards.erase(*iter);
+	}
 }
 
 const std::set<Card>& PlayerHand::getCards() const
